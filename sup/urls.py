@@ -22,4 +22,5 @@ urlpatterns = [
     path('list/', views.list),
     path('port/', views.export, name='exportx'),
     path('detail/<int:id>', views.detail, name='details'),
+    path('pdf/', views.pdf_view, name='pdf_form'),
 ]
