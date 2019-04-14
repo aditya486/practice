@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <tbody id="myTable">
+        <h3>Welcome</h3>
+        {% for emp in emp %}
+        <tr>
+          <td><a href="{% url 'details' emp.id %}">{{ emp.name }}</a></td>
+          <br>
+          <br>
+        </tr>
+        {% endfor %}
+          <a href="{% url 'exportx' %}" class="btn btn-info">PRINT EXCEL</a>
+      </tbody>
+  </body>
+</html>
