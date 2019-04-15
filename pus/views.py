@@ -17,6 +17,7 @@ def list(request):
 
 def export(request):
     employee_resource = EmployeeResource()
+    print(employee_resource)
     dataset = employee_resource.export()
     response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
     response['Content-Disposition'] = 'attachment; filename="persons.xls"'
@@ -58,7 +59,7 @@ def pdf_view(request):
     if pisaStatus.err:
         return HttpResponse('We had some errors <pre>' + html + '</pre>')
     return response
-        
+
 def link_callback(uri, rel):
     path = os.path.join(conf_settings.MEDIA_ROOT,
                         uri.replace(conf_settings.MEDIA_URL, ""))
