@@ -51,14 +51,15 @@ def pdf_view(request):
     template = get_template(template_path)
     html = template.render(context)
 
-    # create a pdf
+
     pisaStatus = pisa.CreatePDF(
         html, dest=response, link_callback=link_callback)
-    # if error then show some funy view
+
+
     if pisaStatus.err:
         return HttpResponse('We had some errors <pre>' + html + '</pre>')
     return response
-        
+
 def link_callback(uri, rel):
     path = os.path.join(conf_settings.MEDIA_ROOT,
                         uri.replace(conf_settings.MEDIA_URL, ""))
