@@ -7,7 +7,7 @@ class Employee(models.Model):
     birth_date = models.DateField()
     location = models.CharField(max_length=100, blank=True)
     image = models.ImageField()
-
+    age = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name

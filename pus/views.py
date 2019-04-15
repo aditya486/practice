@@ -17,7 +17,6 @@ def list(request):
 
 def export(request):
     employee_resource = EmployeeResource()
-    print(employee_resource)
     dataset = employee_resource.export()
     response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
     response['Content-Disposition'] = 'attachment; filename="persons.xls"'
@@ -26,7 +25,6 @@ def export(request):
 def detail(request,id):
     # print(request.user)
     emp = Employee.objects.get(id=id)
-    print(emp)
     return render(request, 'pus/detail.html', {'emp': emp})
 
 from django.http import HttpResponse
