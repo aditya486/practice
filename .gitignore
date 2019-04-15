@@ -1,4 +1,12 @@
-__pycache__/
 .git
+*.log
+
+*.pot
+
 *.pyc
-db.sqlite3
+
+*/*/*/__pycache__/
+
+*/*/__pycache__/
+
+*/__pycache__/
