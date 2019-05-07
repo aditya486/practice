@@ -29,7 +29,6 @@ def export(request):
 def detail(request,id):
     # print(request.user)
     emp = Employee.objects.get(id=id)
-    print(emp)
     return render(request, 'pus/detail.html', {'emp': emp})
 
 from django.http import HttpResponse
@@ -47,9 +46,24 @@ def test_view(request):
     resp = HttpResponse(content_type='application/pdf')
     resp['Content-Disposition'] = 'attachment; filename="report.pdf"'
 
+<<<<<<< HEAD
     emp = Employee.objects.all()
     context = {
         'emp': emp
     }
     result = generate_pdf('pus/pdf.html', file_object=resp, context=context)
     return result
+=======
+    # create a pdf
+    pisaStatus = pisa.CreatePDF(
+        html, dest=response, link_callback=link_callback)
+    # if error then show some funy view
+    if pisaStatus.err:
+        return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
+
+def link_callback(uri, rel):
+    path = os.path.join(conf_settings.MEDIA_ROOT,
+                        uri.replace(conf_settings.MEDIA_URL, ""))
+    return path
+>>>>>>> c97097f059dd637488710452f9d843150be53cda
