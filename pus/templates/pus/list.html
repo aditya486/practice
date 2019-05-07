@@ -1,10 +1,13 @@
-<!DOCTYPE html>
+
+{% load static %}
+<!-- {% load staticfiles %} -->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title></title>
   </head>
   <body>
+    <img src="{% static 'pus/fun.jpg' %}" width="180" height="70" alt="">
     <tbody id="myTable">
         <h3>Welcome</h3>
         {% for emp in emp %}
@@ -15,7 +18,7 @@
         </tr>
         {% endfor %}
           <a href="{% url 'exportx' %}" class="btn btn-info">PRINT EXCEL</a>
-          <a href="{% url 'pdf_form' %}" class="btn btn-info">PRINT PDFs</a>
+          <a href="{% url 'test' %}" class="btn btn-info">PRINT PDFs</a>
       </tbody>
   </body>
 </html>

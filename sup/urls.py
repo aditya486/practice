@@ -16,11 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from pus import views
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('list/', views.list),
     path('port/', views.export, name='exportx'),
     path('detail/<int:id>', views.detail, name='details'),
-    path('pdf/', views.pdf_view, name='pdf_form'),
-]
+    path('test_view', views.test_view, name= 'test'),
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title></title>
   </head>
   <body>
+    <img src="{% static 'pus/fun.jpg' %}" width="180" height="70" alt="">
     <h3>Welcome {{ emp.name }}</h3>
     <p>Email: {{ emp.email }}</p>
     <p>Address: {{ emp.location }}</p>
