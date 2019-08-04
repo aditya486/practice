@@ -1,8 +1,6 @@
 {% load static %}
 <html>
 <head>
-
-
 <style>
 table, th, td {
   border: 1px solid black;
@@ -14,14 +12,48 @@ th, td {
 th {
   text-align: left;
 }
+.hello {
+  text-align: center;
+  font-size:5
+}
+.yell {
+  text-align: center;
+  font-size:5
+}
+@page {
+      size: a4 portrait;
+      @frame header_frame
+      {
+      -pdf-frame-content: header_content;
+      left: 30pt; width: 530pt; top: 15pt; height: 40pt;
+      position: fixed;
+      }
+      @frame content_frame
+      {
+      left: 30pt; width: 530pt; top: 70pt; height: 732pt;
+      }
+      @frame footer_frame
+      {
+      -pdf-frame-content: footer_content;
+      left: 30pt; width: 530pt; top: 802pt; height: 20pt;
+      }
+      @frame logo {             /* Static Frame */
+      -pdf-frame-content: logo;
+      left: 30pt;top: 15pt;
+      }
+      @frame test {             /* Static Framleft: 50pt;left: 50pt;e */
+      -pdf-frame-content: test;
+      top: 22pt;left: 120pt;width: 352pt;
+      }
+      }
 </style>
 </head>
 <body>
-  <div id="">
-    <img src="{% static 'pus/fun.jpg' %}" width="200" height="100">
+  <div id="header_content">
+  <img id="logo" src="{% static 'pus/fun.jpg' %}" width="100" height="50">
+<div id="test" class="yell">dbjbahbhqbhrbhb bjbhj hhgh hhh hvhjjyfy ftftftyft fyfuyfukyftyftfty ftfjtft ghgygyg gjhvjgvj ytftyfyct tyftyezzx iytftyf tftfdrf6f 6ftdfr46drft t5ft5fr5 vgvghvg gnhgchgc ghcgjcv gvyftyfr yftftufu ytftf5f tftftffuf</div>
 </div>
-<br>
-<table style="width:100%">
+<table id="content_frame" >
   <tr>
     <th>Name</th>
     <th>E-mail</th>
@@ -37,6 +69,7 @@ th {
   </tr>
     {% endfor %}
 </table>
-
+<div class="hello" id="footer_content"><pdf:pagenumber>
+</div>
 </body>
 </html>

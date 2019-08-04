@@ -25,5 +25,6 @@ urlpatterns = [
     path('list/', views.list),
     path('port/', views.export, name='exportx'),
     path('detail/<int:id>', views.detail, name='details'),
-    path('test_view', views.test_view, name= 'test'),
-]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('test_view/', views.pdf_view, name='test'),
+    path('excelview/', views.MyView.as_view(), name='excelview'),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

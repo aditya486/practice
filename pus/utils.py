@@ -3,17 +3,15 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.template.loader import get_template
 from django.template.response import TemplateResponse
-from xhtml2pdf import pisa # TODO: Change this when the lib changes.
+from xhtml2pdf import pisa  # TODO: Change this when the lib changes.
 from django.conf import settings
 try:
     from StringIO import BytesIO
-except:
+except Exception:
     from io import BytesIO
-
 import os
 import posixpath
 from django.contrib.staticfiles import finders
-
 
 
 def fetch_resources(uri, rel):
@@ -46,24 +44,25 @@ def fetch_resources(uri, rel):
                     break
     else:
         raise UnsupportedMediaPathException(
-                                'media urls must start with %s or %s' % (
-                                settings.MEDIA_URL, settings.STATIC_URL))
+            'media urls must start with %s or %s' % (
+                settings.MEDIA_URL, settings.STATIC_URL))
     return path
 
+
 def generate_pdf_template_object(template_object, file_object, context,
-                                    link_callback=fetch_resources):
+                                 link_callback=fetch_resources):
     """
     Inner function to pass template objects directly instead of passing a filename
     """
 
     html = template_object.render(context)
-    pisa.CreatePDF(html.encode("UTF-8"), file_object , encoding='UTF-8',
+    pisa.CreatePDF(html.encode("UTF-8"), file_object, encoding='UTF-8',
                    link_callback=link_callback)
     return file_object
 
 
 def generate_pdf(template_name, file_object=None, context=None,
-                    link_callback=fetch_resources): # pragma: no cover
+                 link_callback=fetch_resources):  # pragma: no cover
     """
     Uses the xhtml2pdf library to render a PDF to the passed file_object, from the
     given template name.
